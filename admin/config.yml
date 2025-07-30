@@ -1,0 +1,51 @@
+
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["Trends", "Tips", "Projects"] }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Client Name", name: "client", widget: "string" }
+      - { label: "Testimonial", name: "body", widget: "markdown" }
+
+  - name: "gallery"
+    label: "Gallery"
+    folder: "images/uploads"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "About"
+        name: "about"
+        file: "content/about.md"
+        fields:
+          - { label: "Content", name: "body", widget: "markdown" }
+
+      - label: "Services"
+        name: "services"
+        file: "content/services.md"
+        fields:
+          - { label: "Content", name: "body", widget: "markdown" }
